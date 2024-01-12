@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const Age=()=>{
+const [num,setNum]=useState(0);
+const[result,setResult]=useState('');
 
-export default App;
+
+const agecheck=(num)=>{
+  if(num>=18)
+  {
+  setResult("Eligible to vote");
+  }
+  else{
+    setResult("Not");
+  }
+};
+
+const agegive = (event) => {
+  setNum(event.target.value);
+  agecheck(event.target.value);
+};
+
+
+return (
+  <div>
+    <label>
+      Enter age 
+        <input
+        type="number"
+        value={num}
+        onChange={agegive}
+        />
+    </label>
+
+<p>{result}</p>
+  </div>
+);
+
+};
+
+export default Age;
+///<button onClick={agecheck}>check</button>
